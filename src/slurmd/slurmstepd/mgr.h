@@ -44,6 +44,8 @@
 #include "src/slurmd/slurmd/slurmd.h"
 #include "src/slurmd/slurmstepd/slurmstepd_job.h"
 
+extern pthread_mutex_t x11_lock;
+
 /*
  * Send batch exit code to slurmctld. Non-zero rc will DRAIN the node.
  */

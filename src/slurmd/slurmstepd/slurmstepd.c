@@ -139,6 +139,9 @@ main (int argc, char **argv)
 		goto ending;
 	}
 
+	if (job->x11)
+		slurm_mutex_lock(&x11_lock);
+
 	_send_ok_to_slurmd(STDOUT_FILENO);
 	_got_ack_from_slurmd(STDIN_FILENO);
 

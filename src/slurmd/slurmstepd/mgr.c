@@ -159,6 +159,7 @@ typedef struct kill_thread {
 	int       secs;
 } kill_thread_t;
 
+pthread_mutex_t x11_lock = PTHREAD_MUTEX_INITIALIZER;
 
 /*
  * Prototypes
@@ -1109,6 +1110,7 @@ static int _spawn_job_container(stepd_step_rec_t *job)
 		close(x11_pipe[0]);
 
 		debug("x11 forwarding local display is %d", job->x11_display);
+		slurm_mutex_unlock(&x11_lock);
 	}
 #endif
 
